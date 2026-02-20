@@ -12,16 +12,16 @@ function Navbar() {
       {/* left */}
       <Link href="/" className='flex items-center '>
         <Image src="/logo.png" className='w-12 h-12 md:h-9 ' width={36} height={36} alt="AZC Logo" />
-        <p  className=' hidden md:blocktext-md font-medium tracking-wider'>AZC</p>
+        <p className=' hidden md:block text-md font-medium tracking-wider'>AZC</p>
       </Link>
       {/* right */}
       <div className='flex items-center gap-6'>
         <SearchBar />
         <Link href="/">
-        <Home  className='w-4 h-4 text-gray-600'/>
+          <Home className='w-4 h-4 text-gray-600' />
         </Link>
-        <Bell className='w-4 h-4 text-gray-600'/>
-        <ShoppingCart className='w-4 h-4 text-gray-600'/>
+        <Bell className='w-4 h-4 text-gray-600' />
+        <ShoppingCart className='w-4 h-4 text-gray-600' />
         <Link href="/login">Sign in</Link>
       </div>
     </nav>
