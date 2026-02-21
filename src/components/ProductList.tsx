@@ -2,6 +2,7 @@ import { ProductsType } from '@/types'
 import React from 'react'
 import Categories from './Categories'
 import ProductCard from './ProductCard'
+import Link from 'next/link'
 // temp
 const products: ProductsType = [
     {
@@ -48,7 +49,7 @@ const products: ProductsType = [
         images: { gray: "/product/6a.png", white: "/product/6w.png" },
 
     },
-     {
+    {
         id: 5,
         name: "Product5",
         shortDescription: "This is the dummy product for development purpose",
@@ -59,7 +60,7 @@ const products: ProductsType = [
         images: { gray: "/product/6a.png", white: "/product/6w.png" },
 
     },
-     {
+    {
         id: 6,
         name: "Product6",
         shortDescription: "This is the dummy product for development purpose",
@@ -70,7 +71,7 @@ const products: ProductsType = [
         images: { gray: "/product/6a.png", white: "/product/6w.png" },
 
     },
-     {
+    {
         id: 7,
         name: "Product7",
         shortDescription: "This is the dummy product for development purpose",
@@ -81,7 +82,7 @@ const products: ProductsType = [
         images: { gray: "/product/6a.png", white: "/product/6w.png" },
 
     },
-     {
+    {
         id: 8,
         name: "Product8",
         shortDescription: "This is the dummy product for development purpose",
@@ -93,16 +94,17 @@ const products: ProductsType = [
 
     },
 ]
-function ProductList() {
+function ProductList({ category }: { category: string }) {
 
     return (
         <div className='w-full'>
             <Categories />
             <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12'>
-{products.map(product=>(
-    <ProductCard key={product.id} product={product}/>
-))}
+                {products.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
             </div>
+            <Link href={category ? `/products?category=${category} ` : "/products"} className='flex justify-end mt-4 underline text-sm text-gray-500'>View all products</Link>
         </div>
     )
 }

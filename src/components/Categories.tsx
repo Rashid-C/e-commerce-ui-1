@@ -1,6 +1,6 @@
 "use client"
 import { Briefcase, Glasses, Laptop, Printer, Shirt, ShoppingBasket } from 'lucide-react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import React from 'react'
 
 const categories = [
@@ -15,9 +15,13 @@ const categories = [
 const Categories = () => {
     const searchParams = useSearchParams()
     const router = useRouter()
+    const pathname = usePathname()
+
     const selectedCategory = searchParams.get("category")
     const handleChange = (value: string | null) => {
-        router.push(`?category=${value}`)
+        const params = new URLSearchParams(searchParams)
+        params.set("category", value || "all")
+        router.push(`${pathname}?${params.toString()}`,{scroll:false})
     }
 
     return (
@@ -27,8 +31,8 @@ const Categories = () => {
                     key={category.name}
                     onClick={() => handleChange(category.slug)}
                     className={`flex items-center justify-center gap-2 cursor-pointer px-2 py-1 rounded-md ${category.slug === selectedCategory
-                            ? "bg-white"
-                            : "text-gray-500"
+                        ? "bg-white"
+                        : "text-gray-500"
                         }`}
                 >
                     {category.icon}
