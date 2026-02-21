@@ -18,6 +18,8 @@ const Categories = () => {
     const pathname = usePathname()
 
     const selectedCategory = searchParams.get("category")
+
+    
     const handleChange = (value: string | null) => {
         const params = new URLSearchParams(searchParams)
         params.set("category", value || "all")

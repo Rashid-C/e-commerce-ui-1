@@ -12,7 +12,7 @@ const Homepage = async ({ searchParams }: { searchParams: Promise<{ category: st
           fill
         />
       </div>
-      <ProductList category={category} />
+      <ProductList category={category} params="homepage" />
     </div>
   )
 }
